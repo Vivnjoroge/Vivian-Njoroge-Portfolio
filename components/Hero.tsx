@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Code } from 'lucide-react';
+import { ArrowRight, Code, FileDown } from 'lucide-react';
 
 const TypewriterText: React.FC<{ text: string; delay?: number; speed?: number }> = ({ text, delay = 0, speed = 50 }) => {
   const [displayedText, setDisplayedText] = useState('');
@@ -138,21 +138,32 @@ const Hero: React.FC = () => {
             </motion.p>
           </div>
 
-          <motion.div variants={fadeUp} className="flex flex-wrap gap-8 items-center">
+          <motion.div variants={fadeUp} className="flex flex-wrap gap-6 items-center">
             <Link 
               to="/projects" 
-              className="group relative px-10 py-5 bg-white text-slate-950 font-bold rounded-full overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95 shadow-xl shadow-white/5"
+              className="group relative px-8 py-4 bg-white text-slate-950 font-bold rounded-full overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95 shadow-xl shadow-white/5"
             >
-              <span className="relative z-10 flex items-center gap-3 text-sm tracking-wider uppercase">
-                Explore Work <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              <span className="relative z-10 flex items-center gap-2 text-xs tracking-widest uppercase">
+                View Work <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </span>
             </Link>
+            
+            <a 
+              href="./cv.pdf" 
+              download="Vivian_Njoroge_CV.pdf"
+              className="group relative px-8 py-4 bg-transparent border border-white/10 text-white font-bold rounded-full overflow-hidden transition-all duration-300 hover:bg-white/5 hover:border-white/30 active:scale-95"
+            >
+              <span className="relative z-10 flex items-center gap-2 text-xs tracking-widest uppercase">
+                Download CV <FileDown size={16} className="group-hover:translate-y-0.5 transition-transform" />
+              </span>
+            </a>
+
             <Link 
               to="/about" 
-              className="group flex items-center gap-3 text-slate-300 hover:text-white font-medium transition-colors text-sm tracking-widest uppercase"
+              className="group flex items-center gap-3 text-slate-400 hover:text-white font-medium transition-colors text-xs tracking-widest uppercase ml-2"
             >
-              My Story
-              <span className="w-12 h-[1px] bg-slate-700 group-hover:w-16 group-hover:bg-blue-500 transition-all duration-500"></span>
+              Story
+              <span className="w-8 h-[1px] bg-slate-800 group-hover:w-12 group-hover:bg-blue-500 transition-all duration-500"></span>
             </Link>
           </motion.div>
           
@@ -173,7 +184,6 @@ const Hero: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
-          // Fix: Changed 'base' to 'ease' to correctly use Framer Motion timing function
           transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] as [number, number, number, number], delay: 1.2 }}
           className="relative aspect-[4/5] md:aspect-square lg:aspect-[4/5] max-w-md mx-auto lg:ml-auto w-full group"
         >
