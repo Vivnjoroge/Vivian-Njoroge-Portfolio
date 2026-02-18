@@ -2,9 +2,14 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { SOCIAL_LINKS } from '../constants';
-import { Send, CheckCircle2, ArrowUpRight, Copy, Check, Mail, ExternalLink } from 'lucide-react';
+import { Send, CheckCircle2, ArrowUpRight, Copy, Check, Mail, ExternalLink, MessageSquare } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
-const Contact: React.FC = () => {
+interface ContactProps {
+  minimal?: boolean;
+}
+
+const Contact: React.FC<ContactProps> = ({ minimal = false }) => {
   const [formState, setFormState] = useState<'idle' | 'sending' | 'sent'>('idle');
   const [copied, setCopied] = useState(false);
 
@@ -21,6 +26,52 @@ const Contact: React.FC = () => {
   };
 
   const gmailWebUrl = "https://mail.google.com/mail/?view=cm&fs=1&to=viviannjoroge91@gmail.com";
+
+  if (minimal) {
+    return (
+      <section className="py-32 px-6 relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-[120px] -z-10"></div>
+        
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="glass p-12 md:p-20 rounded-[3rem] border border-white/5 relative overflow-hidden"
+          >
+            <div className="absolute top-0 right-0 p-8 opacity-10">
+              <MessageSquare size={120} className="text-blue-500" />
+            </div>
+
+            <motion.span 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              className="text-blue-500 font-bold tracking-[0.4em] uppercase text-[10px] mb-6 block"
+            >
+              Get In Touch
+            </motion.span>
+            
+            <h2 className="text-4xl md:text-6xl font-bold font-poppins mb-8 tracking-tighter">
+              Let’s Connect <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-cyan-400">Directly</span>
+            </h2>
+            
+            <p className="text-slate-400 text-lg md:text-xl mb-12 leading-relaxed max-w-2xl mx-auto font-light">
+              I'm ready to collaborate on your next project. Reach out via your preferred platform to discuss how we can build something amazing together.
+            </p>
+
+            <Link 
+              to="/contact" 
+              className="group relative inline-flex items-center gap-4 px-12 py-5 bg-white text-slate-950 font-bold rounded-full overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95 shadow-2xl shadow-white/5"
+            >
+              <span className="relative z-10 flex items-center gap-3 text-sm tracking-widest uppercase">
+                Contact Me <ArrowUpRight size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              </span>
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="contact" className="py-24 px-6 relative bg-transparent">

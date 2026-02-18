@@ -47,7 +47,7 @@ const AnimatedRoutes = () => {
               <Hero />
               <Skills />
               <div className="bg-slate-950/40">
-                <Contact />
+                <Contact minimal={true} />
               </div>
             </PageWrapper>
           } 
