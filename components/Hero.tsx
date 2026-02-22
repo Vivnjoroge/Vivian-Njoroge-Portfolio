@@ -6,7 +6,7 @@ import { ArrowRight, Code, FileDown } from 'lucide-react';
 
 const TypewriterText: React.FC<{ text: string; delay?: number; speed?: number }> = ({ text, delay = 0, speed = 50 }) => {
   const [displayedText, setDisplayedText] = useState('');
-  
+
   useEffect(() => {
     const timer = setTimeout(() => {
       let i = 0;
@@ -46,25 +46,25 @@ const Hero: React.FC = () => {
 
   const fadeUp: Variants = {
     hidden: { opacity: 0, y: 30 },
-    show: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { 
-        duration: 0.8, 
-        ease: [0.16, 1, 0.3, 1] as [number, number, number, number] 
-      } 
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.16, 1, 0.3, 1] as [number, number, number, number]
+      }
     }
   };
 
   const headingPart: Variants = {
     hidden: { y: "100%", opacity: 0 },
-    show: { 
-      y: 0, 
+    show: {
+      y: 0,
       opacity: 1,
-      transition: { 
-        duration: 1, 
-        ease: [0.16, 1, 0.3, 1] as [number, number, number, number] 
-      } 
+      transition: {
+        duration: 1,
+        ease: [0.16, 1, 0.3, 1] as [number, number, number, number]
+      }
     }
   };
 
@@ -73,10 +73,10 @@ const Hero: React.FC = () => {
       {/* Decorative Glows */}
       <div className="absolute top-1/4 -right-20 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px] -z-10 animate-pulse"></div>
       <div className="absolute -bottom-20 -left-20 w-72 h-72 bg-cyan-600/5 rounded-full blur-[100px] -z-10"></div>
-      
+
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        
-        <motion.div 
+
+        <motion.div
           variants={container}
           initial="hidden"
           animate="show"
@@ -84,7 +84,7 @@ const Hero: React.FC = () => {
         >
           {/* Status Badge */}
           <motion.div variants={fadeUp} className="flex items-center gap-4 mb-10">
-            <motion.div 
+            <motion.div
               initial={{ height: 0 }}
               animate={{ height: 32 }}
               transition={{ duration: 1.5, ease: "circOut", delay: 1 }}
@@ -96,13 +96,13 @@ const Hero: React.FC = () => {
           </motion.div>
 
           <div className="relative mb-10">
-            <motion.div 
+            <motion.div
               initial={{ scaleY: 0, opacity: 0 }}
               animate={{ scaleY: 1, opacity: 1 }}
               transition={{ delay: 0.5, duration: 2, ease: [0.16, 1, 0.3, 1] }}
               className="absolute -left-6 md:-left-12 top-0 bottom-0 w-[1px] bg-gradient-to-b from-white/40 via-white/10 to-transparent origin-top hidden md:block"
             />
-            
+
             <h1 className="text-6xl md:text-8xl font-bold font-poppins leading-[1.1] tracking-tighter">
               <div className="overflow-hidden block">
                 <motion.span variants={headingPart} className="inline-block text-white">
@@ -110,8 +110,8 @@ const Hero: React.FC = () => {
                 </motion.span>
               </div>
               <div className="overflow-hidden block">
-                <motion.span 
-                  variants={headingPart} 
+                <motion.span
+                  variants={headingPart}
                   className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-cyan-400"
                 >
                   future of web.
@@ -126,12 +126,12 @@ const Hero: React.FC = () => {
                 <TypewriterText text="Vivian Njoroge" delay={1.8} />
               </span>.
             </motion.p>
-            <motion.p 
+            <motion.p
               variants={fadeUp}
               className="mt-2"
             >
-              <TypewriterText 
-                text="A Software Developer dedicated to creating seamless digital experiences through modern architecture and clean design." 
+              <TypewriterText
+                text="A Software Developer dedicated to creating seamless digital experiences through modern architecture and clean design."
                 delay={3}
                 speed={30}
               />
@@ -139,17 +139,17 @@ const Hero: React.FC = () => {
           </div>
 
           <motion.div variants={fadeUp} className="flex flex-wrap gap-6 items-center">
-            <Link 
-              to="/projects" 
+            <Link
+              to="/projects"
               className="group relative px-8 py-4 bg-white text-slate-950 font-bold rounded-full overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95 shadow-xl shadow-white/5"
             >
               <span className="relative z-10 flex items-center gap-2 text-xs tracking-widest uppercase">
                 View Work <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </span>
             </Link>
-            
-            <a 
-              href="./cv.pdf" 
+
+            <a
+              href="./cv.pdf"
               download="Vivian_Njoroge_CV.pdf"
               className="group relative px-8 py-4 bg-transparent border border-white/10 text-white font-bold rounded-full overflow-hidden transition-all duration-300 hover:bg-white/5 hover:border-white/30 active:scale-95"
             >
@@ -158,15 +158,15 @@ const Hero: React.FC = () => {
               </span>
             </a>
 
-            <Link 
-              to="/about" 
+            <Link
+              to="/about"
               className="group flex items-center gap-3 text-slate-400 hover:text-white font-medium transition-colors text-xs tracking-widest uppercase ml-2"
             >
               Story
               <span className="w-8 h-[1px] bg-slate-800 group-hover:w-12 group-hover:bg-blue-500 transition-all duration-500"></span>
             </Link>
           </motion.div>
-          
+
           <motion.div variants={fadeUp} className="mt-20 pt-10 border-t border-white/5 grid grid-cols-2 gap-12">
             <div className="flex flex-col">
               <span className="text-slate-500 text-[10px] uppercase tracking-[0.3em] mb-2 font-bold">Experience</span>
@@ -185,15 +185,15 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] as [number, number, number, number], delay: 1.2 }}
-          className="relative aspect-[4/5] md:aspect-square lg:aspect-[4/5] max-w-md mx-auto lg:ml-auto w-full group"
+          className="relative aspect-[4/5] md:aspect-square lg:aspect-[4/5] max-w-[320px] mx-auto lg:ml-auto w-full group"
         >
           <div className="absolute -top-10 -left-10 w-40 h-40 bg-blue-500/10 blur-3xl rounded-full"></div>
           <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-cyan-500/10 blur-3xl rounded-full"></div>
-          
+
           <div className="w-full h-full overflow-hidden rounded-[3rem] border border-white/10 shadow-2xl relative">
-            <img 
-              src="./img/vivian.jpg" 
-              alt="Vivian Njoroge" 
+            <img
+              src="/assets/profimage.png"
+              alt="Vivian Njoroge"
               onError={(e) => {
                 (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1000&auto=format&fit=crop";
               }}
@@ -202,7 +202,7 @@ const Hero: React.FC = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-60"></div>
           </div>
 
-          <motion.div 
+          <motion.div
             initial={{ x: 30, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 1.5, duration: 1 }}
@@ -218,7 +218,7 @@ const Hero: React.FC = () => {
               </div>
               <div className="pt-4 border-t border-white/5">
                 <div className="flex gap-1.5">
-                  {[1,2,3,4,5].map(i => (
+                  {[1, 2, 3, 4, 5].map(i => (
                     <div key={i} className="w-1.5 h-1.5 rounded-full bg-blue-500/40"></div>
                   ))}
                 </div>
