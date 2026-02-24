@@ -7,6 +7,12 @@ export interface Project {
   githubUrl: string;
   liveUrl?: string;
   imageUrl: string;
+  technicalDecisions?: {
+    title: string;
+    problem: string;
+    solution: string;
+    impact: string;
+  }[];
 }
 
 export interface Skill {
